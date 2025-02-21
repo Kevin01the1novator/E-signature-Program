@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signature Pad - Transparent for Colors, Popup for White</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f0f0;
+    }
+    .signature-container {
+      width: 600px;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    canvas {
+      border: 1px solid #000;
+      display: block;
+      margin: 0 auto 20px;
+      /* 
+        Default canvas background is white; 
+        if the user picks white strokes, we switch this to black in JS for visibility.
+      */
+      background: #fff;
+    }
+    input {
+      display: block;
+      margin: 10px auto 20px;
+      padding: 8px;
+      width: 80%;
+      font-size: 16px;
+      font-family: "Times New Roman", Times, serif;
+      background: #fff; /* toggled to black if color is light (white) */
+      color: #000;      /* toggled to the chosen stroke color */
+      border: 1px solid #ccc;
+      transition: background 0.3s, color 0.3s;
+    }
+    .color-picker {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+      margin-bottom: 20px;
+    }
+    .color-box {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      border: 2px solid black; /* Always a black border by default */
+      transition: border 0.2s;
+    }
+    .color-box.selected {
+      border-color: red; /* Red border when selected */
+    }
+    button {
+      margin: 0 10px;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="signature-container">
+    <canvas id="signature-pad" width="400" height="200"></canvas>
+    
+    <!-- Color Picker -->
+    <div class="color-picker">
+      <!-- Black is the default selected color -->
+      <div class="color-box selected" data-color="#000000" style="background-color: #000000;"></div>
+      <div class="color-box" data-color="#FF0000" style="background-color: #FF0000;"></div>
+      <div class="color-box" data-color="#00FF00" style="background-color: #00FF00;"></div>
+      <div class="color-box" data-color="#0000FF" style="background-color: #0000FF;"></div>
+      <div class="color-box" data-color="#FFFF00" style="background-color: #FFFF00;"></div>
+      <div class="color-box" data-color="#FFA500" style="background-color: #FFA500;"></div>
+      <div class="color-box" data-color="#800080" style="background-color: #800080;"></div>
+      <div class="color-box" data-color="#FFC0CB" style="background-color: #FFC0CB;"></div>
+      <div class="color-box" data-color="#A52A2A" style="background-color: #A52A2A;"></div>
+      <div class="color-box" data-color="#808080" style="background-color: #808080;"></div>
+      <div class="color-box" data-color="#FFFFFF" style="background-color: #FFFFFF;"></div>
+      <!-- Add more color boxes if needed -->
+    </div>
+    
+    <!-- Full Name Input Box -->
+    <input type="text" id="fullName" placeholder="Enter your full name (optional)">
+    
+    <div>
+      <button id="clear">Clear</button>
+      <button id="save">Save</button>
+    </div>
+  </div>
+
+  <!-- SignaturePad Library -->
+  <script src="signature_pad.umd.min.js"></script>
+  <!-- Main JavaScript -->
+  <script src="main.js"></script>
+</body>
+</html>
