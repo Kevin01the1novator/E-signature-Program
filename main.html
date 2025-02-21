@@ -13,7 +13,7 @@
       background: #f0f0f0;
     }
     .signature-container {
-      width: 600px; /* Medium-sized container */
+      width: 600px;
       padding: 20px;
       background: #fff;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -24,6 +24,14 @@
       display: block;
       margin: 0 auto 20px;
     }
+    input {
+      display: block;
+      margin: 10px auto 20px;
+      padding: 8px;
+      width: 80%;
+      font-size: 16px;
+      font-family: "Times New Roman", Times, serif;
+    }
     button {
       margin: 0 10px;
       padding: 10px 20px;
@@ -33,16 +41,17 @@
 <body>
   <div class="signature-container">
     <canvas id="signature-pad" width="400" height="200"></canvas>
+    <!-- Full Name Input Box -->
+    <input type="text" id="fullName" placeholder="Enter your full name (optional)">
     <div>
       <button id="clear">Clear</button>
       <button id="save">Save</button>
     </div>
   </div>
 
-  <!-- Connect your JavaScript file -->
+  <!-- Load the SignaturePad library first -->
   <script src="signature_pad.umd.min.js"></script>
+  <!-- Load your main script as a module (adjust the path as needed) -->
   <script type="module" src="main.js"></script>
-
-
 </body>
 </html>
